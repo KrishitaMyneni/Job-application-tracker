@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+const API_URL = "https://job-application-tracker-8ptt.onrender.com";
+
 function App() {
   const [jobs, setJobs] = useState([]);
   const [company, setCompany] = useState("");
@@ -17,7 +19,7 @@ function App() {
 
   useEffect(() => {
     if (token) {
-      fetch("http://localhost:5000/jobs", {
+      fetch(`${API_URL}/jobs`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,7 +44,7 @@ function App() {
   const handleAuth = () => {
     const endpoint = isLogin ? "login" : "register";
 
-    fetch(`http://localhost:5000/${endpoint}`, {
+    fetch(`${API_URL}/${endpoint}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -77,7 +79,7 @@ function App() {
   /* ================= JOB ACTIONS ================= */
 
   const addJob = () => {
-    fetch("http://localhost:5000/jobs", {
+    fetch(`${API_URL}/jobs`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -94,7 +96,7 @@ function App() {
   };
 
   const deleteJob = (id) => {
-    fetch(`http://localhost:5000/jobs/${id}`, {
+    fetch(`${API_URL}/jobs/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -105,7 +107,7 @@ function App() {
   };
 
   const updateStatus = (id, newStatus) => {
-    fetch(`http://localhost:5000/jobs/${id}`, {
+    fetch(`${API_URL}/jobs/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
