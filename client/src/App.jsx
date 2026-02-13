@@ -13,9 +13,9 @@ function App() {
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true);
 
-  const [filter, setFilter] = useState("All"); // ✅ moved inside
+  const [filter, setFilter] = useState("All"); 
 
-  /* ================= LOAD JOBS ================= */
+  /* LOAD JOBS*/
 
   useEffect(() => {
     if (token) {
@@ -39,7 +39,7 @@ function App() {
   }, [token]);
   
 
-  /* ================= AUTH ================= */
+  /*  AUTH*/
 
   const handleAuth = () => {
     const endpoint = isLogin ? "login" : "register";
@@ -76,7 +76,7 @@ function App() {
     setJobs([]);
   };
 
-  /* ================= JOB ACTIONS ================= */
+  /*JOB ACTION*/
 
   const addJob = () => {
     fetch(`${API_URL}/jobs`, {
@@ -125,7 +125,7 @@ function App() {
       });
   };
 
-  /* ================= STATS ================= */
+  /* STATS*/
 
   const stats = {
     Applied: jobs.filter(j => j.status === "Applied").length,
@@ -146,7 +146,7 @@ function App() {
     Rejected: "bg-red-100 text-red-700",
   };
 
-  /* ================= AUTH SCREEN ================= */
+  /* AUTH SCREEN */
 
   if (!token) {
     return (
@@ -192,7 +192,7 @@ function App() {
     );
   }
 
-  /* ================= MAIN APP ================= */
+  /*  MAIN AP*/
 
   return (
     <div className="min-h-screen bg-gray-100 py-16 px-4">
@@ -213,7 +213,7 @@ function App() {
           Track and manage your job applications.
         </p>
 
-        {/* ===== STATS ===== */}
+        {/* STATS */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
           {Object.entries(stats).map(([key, value]) => (
             <div
@@ -226,7 +226,7 @@ function App() {
           ))}
         </div>
 
-        {/* ===== FILTER ===== */}
+        {/*FILTER*/}
         <div className="flex justify-end mb-4">
           <select
             value={filter}
@@ -241,7 +241,7 @@ function App() {
           </select>
         </div>
 
-        {/* ===== FORM ===== */}
+        {/*FORM*/}
         <div className="bg-white p-6 rounded-xl shadow-sm mb-8">
           <div className="flex flex-wrap gap-4">
             <input
@@ -275,7 +275,7 @@ function App() {
           </div>
         </div>
 
-        {/* ===== JOBS ===== */}
+        {/* JOBS */}
         {filteredJobs.length === 0 && (
           <div className="text-center text-gray-400 py-10">
             No jobs found.
