@@ -3,8 +3,10 @@
 A full-stack MERN application that helps users track and manage job applications in one place.
 
 ## Features
+- Authentication
 - Add new job applications
 - Track company, role, and status
+- Filtering jobs by status
 - Update application status
 - Delete job entries
 - Persistent storage using MongoDB
@@ -22,10 +24,7 @@ Other: Axios, REST API
 
 
 ## Future Improvements
-- Authentication
-- Filtering jobs by status
 - Dashboard analytics
-- Deployment
 
 ## Author
 Krishita Myneni
